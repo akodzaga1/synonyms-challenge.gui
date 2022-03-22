@@ -1,0 +1,92 @@
+.icon-link {
+    cursor: pointer;
+}
+
+.icon-link:hover {
+    color: rgba(0,0,255,0.8);
+}
+
+.icon-font {
+    font-size: 96px;
+}
+
+
+.icon-text {
+    font-size: 24px;
+}
+
+.container {
+    position: relative;
+    min-height: 100vh;
+    background-color: lightgoldenrodyellow;
+    height: 100%;
+    color: rgba(255,255,255,0.25);
+    display: flex;
+}
+
+.container-wrapper {
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+}
+
+.container-content {
+    /* max-width: 400px; */
+    /* width: 100%; */
+    margin: 0 auto;
+    padding: 4%;
+    /* padding: 40px; */
+    text-align: center;
+}
+
+.shadow-card {
+    -webkit-box-shadow: 7px 7px 11px 1px rgba(138,138,138,0.75) !important;
+    -moz-box-shadow: 7px 7px 11px 1px rgba(138,138,138,0.75) !important;
+    box-shadow: 7px 7px 11px 1px rgba(138,138,138,0.75) !important;
+    margin-bottom: 30px;
+    background-color: rgba(255,255,255,0.75);
+}
+
+.insert-field-container {
+    justify-content: center;
+}
+
+.insert-field {
+    margin-bottom: 15px;
+}
+
+.close-button {
+    float: right;
+    cursor: pointer; 
+}
+
+#delete-icon-container {
+    cursor: pointer;
+}
+
+#delete-icon {
+    margin-top: 15px; 
+    margin-left: 10px; 
+    color: red;
+}
+
+#add-icon-container {
+    cursor: pointer;
+}
+
+#add-icon {
+    vertical-align: top;
+}
+
+#form-group {
+    justify-content: center;
+}
+
+#submit-button {
+    margin-top: 15px;
+}
+
+.search-all {
+    margin-top: 15px;
+    justify-content: center;
+}
