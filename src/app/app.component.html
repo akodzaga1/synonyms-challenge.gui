@@ -9,13 +9,13 @@
       <mat-card class="shadow-card" fxFlex="100" fxLayout="row wrap">
         <mat-card-title fxFlex="100">Synonyms collection</mat-card-title>
         <mat-card-actions fxFlex="100" fxLayout="row wrap">
-          <div class="icon-link" fxLayout="column" fxFlex="50" fxFlex.xs="100" (click)="isNew = true">
+          <div class="icon-link" fxLayout="column" fxFlex="50" fxFlex.xs="100" (click)="isNew = true" data-test="btn-add-new">
             <a class="material-icons icon-font" fxFlex="100">
               library_add
             </a>
             <span fxFlex="100">ADD NEW</span>
           </div>
-          <div class="icon-link" fxLayout="column" fxFlex="50" fxFlex.xs="100" (click)="isSearch = true">
+          <div class="icon-link" fxLayout="column" fxFlex="50" fxFlex.xs="100" (click)="isSearch = true" data-test="btn-search">
             <a class="material-icons icon-font" fxFlex="100">
               search
             </a>
@@ -31,7 +31,7 @@
       <mat-card class="shadow-card" fxFlex="100" fxLayout="row wrap">
         <mat-card-title fxFlex="100">Add new synonyms
           <span class="close-button">
-            <mat-icon color="warn" (click)="isNew = false">cancel</mat-icon>
+            <mat-icon color="warn" (click)="isNew = false" data-test="btn-close">cancel</mat-icon>
           </span></mat-card-title>
         <mat-card-actions class="insert-field-container" fxFlex="100" fxLayout="row wrap">
           <form #formChild="ngForm" id="form-group" [formGroup]="form" (ngSubmit)="onSubmit()" fxFlex="100"
@@ -40,20 +40,20 @@
               <div *ngFor="let iw of insertedWords.value; let i=index" fxFlex="100">
                 <mat-form-field fxFlex="80">
                   <input (input)="validateForm()" matInput placeholder="Insert word..."
-                    [formControl]="iw.controls.word">
+                    [formControl]="iw.controls.word" data-test="input-field">
                   <mat-error *ngIf="iw.controls['word'].hasError('required')">Word is required.</mat-error>
                 </mat-form-field>
                 <span fxFlex="10"></span>
-                <span fxFlex="10" *ngIf="i > 1"><a id="delete-icon-container" (click)="removeIW(i)">
+                <span fxFlex="10" *ngIf="i > 1"><a id="delete-icon-container" (click)="removeIW(i)" data-test="btn-delete-input">
                     <mat-icon id="delete-icon">delete_forever</mat-icon>
                   </a></span>
               </div>
-              <div fxFlex="100"><a id="add-icon-container" (click)="addIW()">
+              <div fxFlex="100"><a id="add-icon-container" (click)="addIW()" data-test="btn-add-input">
                   <mat-icon id="add-icon">add_circle_outline</mat-icon>
                 </a></div>
             </span>
             <button id="submit-button" mat-raised-button color="primary" [disabled]="submitDisabled"
-              fxFlex="50">Submit</button>
+              fxFlex="50" data-test="submit-add-new">Submit</button>
           </form>
         </mat-card-actions>
       </mat-card>
@@ -65,30 +65,32 @@
       <mat-card class="shadow-card" fxFlex="100" fxLayout="row wrap">
         <mat-card-title fxFlex="100">Search synonyms
           <span class="close-button">
-            <mat-icon color="warn" (click)="isSearch = false">cancel</mat-icon>
+            <mat-icon color="warn" (click)="isSearch = false" data-test="btn-close">cancel</mat-icon>
           </span></mat-card-title>
         <mat-card-actions class="insert-field-container" fxFlex="100" fxLayout="row wrap">
           <div [formGroup]="formSearch">
             <mat-form-field class="insert-field" fxFlex="100">
-              <input matInput placeholder="Insert word..." formControlName="word">
+              <input matInput placeholder="Insert word..." formControlName="word" data-test="input-search">
               <mat-error *ngIf="formSearch?.controls['word']?.hasError('required')">Word is required.</mat-error>
             </mat-form-field>
 
           </div>
           <div fxFlex="100">
             <button mat-raised-button color="primary" [disabled]="!formSearch.valid"
-              (click)="resetSearch();onSubmitSearch('mysynonyms')" fxFlex="50">Search my synonyms</button>
+              (click)="resetSearch();onSubmitSearch('mysynonyms')" fxFlex="50" data-test="submit-my-syn">Search my synonyms</button>
             <button mat-raised-button color="primary" [disabled]="!formSearch.valid"
-              (click)="resetSearch();onSubmitSearch('allsynonyms')" fxFlex="50">Search in existing database</button>
+              (click)="resetSearch();onSubmitSearch('allsynonyms')" fxFlex="50" data-test="submit-all-syn">Search in existing database</button>
           </div>
         </mat-card-actions>
-        <span *ngIf="resultList.synonyms.length > 0" fxFlex="100"><b>Found synonyms for {{searchWord}}:</b></span>
-        <span *ngIf="resultList.synonyms.length > 0" fxFlex="100"><span *ngFor="let word of resultList.synonyms; let i = index">{{word}}<span *ngIf="i != resultList.synonyms.length - 1">, </span></span></span>
+        <span *ngIf="resultList.synonyms.length > 0" fxFlex="100" data-test="result-span"><b>Found {{resultList.synonyms.length}} synonym{{resultList.synonyms.length > 1 ? 's' : ''}} for {{searchWord}}:</b></span>
+        <span *ngIf="resultList.synonyms.length > 0" fxFlex="100" data-test="result-span"><span *ngFor="let word of resultList.synonyms; let i = index">{{word}}<span *ngIf="i != resultList.synonyms.length - 1">, </span></span></span>
         <span class="search-all" *ngIf="hasMore" fxFlex="100">
           <button mat-button color="primary"
-              (click)="getAll = false; onSubmitSearch('allsynonyms')" fxFlex="20" fxFlex.sm="35" fxFlex.xs="50">SHOW MORE...</button>
+              (click)="getAll = false; onSubmitSearch('allsynonyms')" fxFlex="20" fxFlex.sm="35" fxFlex.xs="50"
+              data-test="btn-show-more">SHOW MORE...</button>
             <button mat-button color="primary"
-              (click)="getAll = true; onSubmitSearch('allsynonyms')" fxFlex="20" fxFlex.sm="35" fxFlex.xs="50">SHOW ALL</button>
+              (click)="getAll = true; onSubmitSearch('allsynonyms')" fxFlex="20" fxFlex.sm="35" fxFlex.xs="50"
+              data-test="btn-show-all">SHOW ALL</button>
         </span>
       </mat-card>
     </div>
