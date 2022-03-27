@@ -1,6 +1,6 @@
 describe('Full Workflow Test', () => {
   it('Visits the initial project page', () => {
-    cy.visit('http://localhost:4200/')
+    cy.visit('https://synonyms-challenge.netlify.app/')
     cy.contains('Synonyms collection')
   })
   it('Open form for adding', () => {
