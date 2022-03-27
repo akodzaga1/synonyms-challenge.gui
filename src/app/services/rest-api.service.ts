@@ -3,13 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { retry, catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { SynonymsList } from '../models/synonyms-list';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestApiService {
 
-  apiURL = 'http://localhost:2508/api';
+  apiURL = environment.apiURL;
 
   constructor(private http: HttpClient) {}
 
