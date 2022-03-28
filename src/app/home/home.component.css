@@ -1,0 +1,11 @@
+.icon-link {
+    cursor: pointer;
+}
+
+.icon-link:hover {
+    color: rgba(0,0,255,0.8);
+}
+
+.icon-font {
+    font-size: 96px;
+}

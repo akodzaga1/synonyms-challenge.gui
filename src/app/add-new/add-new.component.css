@@ -1,0 +1,25 @@
+#delete-icon-container {
+    cursor: pointer;
+}
+
+#delete-icon {
+    margin-top: 15px; 
+    margin-left: 10px; 
+    color: red;
+}
+
+#add-icon-container {
+    cursor: pointer;
+}
+
+#add-icon {
+    vertical-align: top;
+}
+
+#form-group {
+    justify-content: center;
+}
+
+#submit-button {
+    margin-top: 15px;
+}

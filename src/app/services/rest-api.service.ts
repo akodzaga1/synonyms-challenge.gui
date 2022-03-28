@@ -12,7 +12,7 @@ export class RestApiService {
 
   apiURL = environment.apiURL;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -49,11 +49,10 @@ export class RestApiService {
       // Get server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-    
-    // window.alert(errorMessage);
+
     return throwError(() => {
       return errorMessage;
     });
   }
-  
+
 }

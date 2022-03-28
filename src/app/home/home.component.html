@@ -1,0 +1,32 @@
+<div class="container" fxLayout="row" fxFlex="100">
+    <div fxFlex="20" fxFlex.xs="0" fxFlex.sm="5" fxFlex.lg="25" fxFlex.xl="30"></div>
+    <div *ngIf="!isSearch && !isNew" class="container-wrapper" fxLayout="column" fxFlex="60" fxFlex.xs="100"
+        fxFlex.sm="90" fxFlex.lg="50" fxFlex.xl="40">
+        <div class="container-content">
+            <mat-card class="shadow-card" fxFlex="100" fxLayout="row wrap">
+                <mat-card-title fxFlex="100">Synonyms collection</mat-card-title>
+                <mat-card-actions fxFlex="100" fxLayout="row wrap">
+                    <div class="icon-link" fxLayout="column" fxFlex="50" fxFlex.xs="100" (click)="isNew = true"
+                        data-test="btn-add-new">
+                        <a class="material-icons icon-font" fxFlex="100">
+                            library_add
+                        </a>
+                        <span fxFlex="100">ADD NEW</span>
+                    </div>
+                    <div class="icon-link" fxLayout="column" fxFlex="50" fxFlex.xs="100" (click)="isSearch = true"
+                        data-test="btn-search">
+                        <a class="material-icons icon-font" fxFlex="100">
+                            search
+                        </a>
+                        <span fxFlex="100">SEARCH</span>
+                    </div>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+    <app-add-new class="container-wrapper" *ngIf="isNew" [(isNew)]="isNew" [(myCollection)]="myCollection"
+        fxLayout="column" fxFlex="60" fxFlex.xs="100" fxFlex.sm="90" fxFlex.lg="50" fxFlex.xl="40"></app-add-new>
+    <app-search class="container-wrapper" *ngIf="isSearch" [(isSearch)]="isSearch" [(myCollection)]="myCollection"
+        [isLoading]="isLoading" (isLoadingChange)="isLoadingChange.emit($event)" fxLayout="column" fxFlex="60"
+        fxFlex.xs="100" fxFlex.sm="90" fxFlex.lg="50" fxFlex.xl="40"></app-search>
+</div>

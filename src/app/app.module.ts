@@ -15,13 +15,19 @@ import { CommonModule } from '@angular/common';
 import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
 import { SnackService } from './services/snack.service';
 import { ErrorSnackbarComponent, SuccessSnackbarComponent, InfoSnackbarComponent } from './snack-bar/snack-bar.component';
+import { HomeComponent } from './home/home.component';
+import { AddNewComponent } from './add-new/add-new.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorSnackbarComponent,
     InfoSnackbarComponent,
-    SuccessSnackbarComponent
+    SuccessSnackbarComponent,
+    HomeComponent,
+    AddNewComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,
@@ -39,9 +45,9 @@ import { ErrorSnackbarComponent, SuccessSnackbarComponent, InfoSnackbarComponent
     ReactiveFormsModule,
     NgxLoadingModule.forRoot({
       animationType: ngxLoadingAnimationTypes.wanderingCubes,
-      backdropBackgroundColour: 'rgba(0,0,0,0.25)', 
-      primaryColour: '#ffffff', 
-      secondaryColour: '#ffffff', 
+      backdropBackgroundColour: 'rgba(0,0,0,0.25)',
+      primaryColour: '#ffffff',
+      secondaryColour: '#ffffff',
       tertiaryColour: '#ffffff'
     }),
   ],

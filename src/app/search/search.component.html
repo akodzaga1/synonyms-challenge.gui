@@ -1,0 +1,39 @@
+<div class="container-content">
+    <mat-card class="shadow-card" fxFlex="100" fxLayout="row wrap">
+        <mat-card-title fxFlex="100">Search synonyms
+            <span class="close-button">
+                <mat-icon color="warn" (click)="isSearchChange.emit(false)" data-test="btn-close">cancel</mat-icon>
+            </span></mat-card-title>
+        <mat-card-actions class="insert-field-container" fxFlex="100" fxLayout="row wrap">
+            <div [formGroup]="formSearch" fxFlex="100" class="insert-field-container">
+                <mat-form-field class="insert-field" fxFlex="40">
+                    <input matInput placeholder="Insert word..." formControlName="word" data-test="input-search">
+                    <mat-error *ngIf="formSearch?.controls['word']?.hasError('required')">Word is required.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div fxFlex="100" fxLayout="row wrap" class="submit-container">
+                <button mat-raised-button color="primary" [disabled]="!formSearch.valid"
+                    (click)="resetSearch();onSubmitSearch('mysynonyms')" fxFlex="45" fxFlex.xs="100"
+                    data-test="submit-my-syn">Search my
+                    synonyms</button>
+                <button mat-raised-button color="primary" [disabled]="!formSearch.valid"
+                    (click)="resetSearch();onSubmitSearch('allsynonyms')" fxFlex="45" fxFlex.xs="100"
+                    data-test="submit-all-syn">Search
+                    in existing database</button>
+            </div>
+        </mat-card-actions>
+        <span *ngIf="resultList.synonyms.length > 0" fxFlex="100" data-test="result-span"><b>Found
+                {{resultList.synonyms.length}} synonym{{resultList.synonyms.length > 1 ? 's' : ''}} for
+                {{searchWord}}:</b></span>
+        <span *ngIf="resultList.synonyms.length > 0" fxFlex="100" data-test="result-span"><span
+                *ngFor="let word of resultList.synonyms; let i = index">{{word}}<span
+                    *ngIf="i != resultList.synonyms.length - 1">, </span></span></span>
+        <span class="search-all" *ngIf="hasMore" fxFlex="100">
+            <button mat-button color="primary" (click)="getAll = false; onSubmitSearch('allsynonyms')" fxFlex="20"
+                fxFlex.sm="35" fxFlex.xs="50" data-test="btn-show-more">SHOW MORE...</button>
+            <button mat-button color="primary" (click)="getAll = true; onSubmitSearch('allsynonyms')" fxFlex="20"
+                fxFlex.sm="35" fxFlex.xs="50" data-test="btn-show-all">SHOW ALL</button>
+        </span>
+    </mat-card>
+</div>

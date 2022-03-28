@@ -13,8 +13,6 @@ describe('Full Workflow Test', () => {
     cy.get("[data-test=submit-add-new]").click()
     cy.get("[data-test=snack-bar]").should('exist')
     cy.contains('Synonyms successfully added!')
-    cy.wait(6000);
-    cy.get("[data-test=snack-bar]").should('not.exist')
   })
   it('Add second group of synonyms', () => {
     cy.get("[data-test=input-field]").eq(0).type("synonymB")
@@ -22,8 +20,6 @@ describe('Full Workflow Test', () => {
     cy.get("[data-test=submit-add-new]").click()
     cy.get("[data-test=snack-bar]").should('exist')
     cy.contains('Synonyms successfully added!')
-    cy.get("[data-test=btn-close-snack]").click()
-    cy.get("[data-test=snack-bar]").should('not.exist')
   })
   it('Add third group of synonyms', () => {
     cy.get("[data-test=input-field]").eq(0).type("synonymC")
@@ -31,8 +27,6 @@ describe('Full Workflow Test', () => {
     cy.get("[data-test=submit-add-new]").click()
     cy.get("[data-test=snack-bar]").should('exist')
     cy.contains('Synonyms successfully added!')
-    cy.get("[data-test=btn-close-snack]").click()
-    cy.get("[data-test=snack-bar]").should('not.exist')
   })
   it('Add fourth group of synonyms', () => {
     cy.get("[data-test=input-field]").eq(0).type("synonymE")
@@ -40,8 +34,6 @@ describe('Full Workflow Test', () => {
     cy.get("[data-test=submit-add-new]").click()
     cy.get("[data-test=snack-bar]").should('exist')
     cy.contains('Synonyms successfully added!')
-    cy.get("[data-test=btn-close-snack]").click()
-    cy.get("[data-test=snack-bar]").should('not.exist')
   })
   it('Add fifth group of synonyms', () => {
     cy.get("[data-test=input-field]").eq(0).type("synonymG")
@@ -57,8 +49,6 @@ describe('Full Workflow Test', () => {
     cy.get("[data-test=submit-add-new]").click()
     cy.get("[data-test=snack-bar]").should('exist')
     cy.contains('Synonyms successfully added!')
-    cy.get("[data-test=btn-close-snack]").click()
-    cy.get("[data-test=snack-bar]").should('not.exist')
   })
   it('Exit form for adding', () => {
     cy.get("[data-test=btn-close]").click()
@@ -233,8 +223,6 @@ describe('Full Workflow Test', () => {
     cy.get("[data-test=submit-my-syn]").click()
     cy.wait(5000)
     cy.contains('No synonyms for that word')
-    cy.wait(6000);
-    cy.get("[data-test=snack-bar]").should('not.exist')
     cy.get("[data-test=result-span]").should('not.exist')
   })
   it('Search all synonyms for testSynonym', () => {
@@ -242,8 +230,6 @@ describe('Full Workflow Test', () => {
     cy.get("[data-test=submit-all-syn]").click()
     cy.wait(5000)
     cy.contains('No synonyms for that word')
-    cy.get("[data-test=btn-close-snack]").click()
-    cy.get("[data-test=snack-bar]").should('not.exist')
     cy.get("[data-test=btn-show-more]").should('not.exist')
     cy.get("[data-test=btn-show-all]").should('not.exist')
     cy.get("[data-test=result-span]").should('not.exist')

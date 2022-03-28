@@ -1,0 +1,12 @@
+.search-all {
+    margin-top: 15px;
+    justify-content: center;
+}
+
+.submit-container {
+    justify-content: center;
+}
+
+.submit-container button {
+    margin-bottom: 15px;
+}

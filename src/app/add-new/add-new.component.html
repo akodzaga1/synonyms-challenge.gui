@@ -1,0 +1,33 @@
+<div class="container-content">
+    <mat-card class="shadow-card" fxFlex="100" fxLayout="row wrap">
+        <mat-card-title fxFlex="100">Add new synonyms
+            <span class="close-button">
+                <mat-icon color="warn" (click)="isNewChange.emit(false)" data-test="btn-close">cancel</mat-icon>
+            </span></mat-card-title>
+        <mat-card-actions class="insert-field-container" fxFlex="100" fxLayout="row wrap">
+            <form #formChild="ngForm" id="form-group" [formGroup]="form" (ngSubmit)="onSubmit()" fxFlex="100"
+                fxLayout="row wrap">
+                <span *ngIf="insertedWords != null && insertedWords.value != null" fxLayout="row wrap" fxFlex="100">
+                    <div *ngFor="let iw of insertedWords.value; let i=index" fxFlex="100">
+                        <mat-form-field fxFlex="80">
+                            <input (input)="validateForm()" matInput placeholder="Insert word..."
+                                [formControl]="iw.controls.word" data-test="input-field">
+                            <mat-error *ngIf="iw.controls['word'].hasError('required')">Word is required.
+                            </mat-error>
+                        </mat-form-field>
+                        <span fxFlex="10"></span>
+                        <span fxFlex="10" *ngIf="i > 1"><a id="delete-icon-container" (click)="removeIW(i)"
+                                data-test="btn-delete-input">
+                                <mat-icon id="delete-icon">delete_forever</mat-icon>
+                            </a></span>
+                    </div>
+                    <div fxFlex="100"><a id="add-icon-container" (click)="addIW()" data-test="btn-add-input">
+                            <mat-icon id="add-icon">add_circle_outline</mat-icon>
+                        </a></div>
+                </span>
+                <button id="submit-button" mat-raised-button color="primary" [disabled]="submitDisabled" fxFlex="50"
+                    data-test="submit-add-new">Submit</button>
+            </form>
+        </mat-card-actions>
+    </mat-card>
+</div>

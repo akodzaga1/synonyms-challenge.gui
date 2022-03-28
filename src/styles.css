@@ -12,3 +12,45 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .snackInfo{
     background-color: #0861ad !important;
 }
+
+.close-button {
+    float: right;
+    cursor: pointer; 
+}
+
+.container {
+    position: relative;
+    min-height: 100vh;
+    background-color: lightgoldenrodyellow;
+    height: 100%;
+    color: rgba(255,255,255,0.25);
+    display: flex;
+}
+
+.container-wrapper {
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+}
+
+.container-content {
+    margin: 0 auto;
+    padding: 4%;
+    text-align: center;
+}
+
+.shadow-card {
+    -webkit-box-shadow: 7px 7px 11px 1px rgba(138,138,138,0.75) !important;
+    -moz-box-shadow: 7px 7px 11px 1px rgba(138,138,138,0.75) !important;
+    box-shadow: 7px 7px 11px 1px rgba(138,138,138,0.75) !important;
+    margin-bottom: 30px;
+    background-color: rgba(255,255,255,0.75);
+}
+
+.insert-field-container {
+    justify-content: center;
+}
+
+.insert-field {
+    margin-bottom: 15px;
+}
