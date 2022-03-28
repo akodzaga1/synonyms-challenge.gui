@@ -28,10 +28,12 @@ export class AddNewComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // Initially add two inputs for synonyms
     this.addIW();
     this.addIW();
   }
 
+  // Reset form after submitting
   resetForm() {
     this.formChild.resetForm();
     this.form = this.fb.group({
@@ -80,6 +82,7 @@ export class AddNewComponent implements OnInit {
     }
   }
 
+  // Adds input field for synonym insert
   addIW() {
     if (this.insertedWords) {
       this.insertedWords.value.push(this.fb.group({
@@ -90,7 +93,8 @@ export class AddNewComponent implements OnInit {
 
   }
 
-  removeIW(i: any) {
+  // Removes input field for synonym insert in respective row
+  removeIW(i: number) {
     if (this.insertedWords) {
       this.insertedWords.value.splice(i, 1);
       this.validateForm();
